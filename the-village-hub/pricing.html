@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Village Hub — Pricing & Memberships</title>
+  <meta name="description" content="Flexible coworking memberships, private offices, and meeting spaces at The Village Hub. Choose a plan that fits your work and team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --vh-green:#6E8F6C;    /* Village Hub sage */
+      --vh-green-600:#5c7a5a;
+      --vh-green-50:#f3f6f3;
+      --vh-gold:#D4AF37;     /* Brickfield gold accent */
+      --vh-dark:#0b0b0b;
+      --vh-text:#1e1f20;
+      --vh-muted:#6b7280;
+      --vh-bg:#ffffff;
+      --vh-card:#ffffff;
+      --vh-border:#e5e7eb;
+      --radius:16px;
+      --shadow:0 10px 24px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--vh-text);
+      background:var(--vh-bg);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{width:min(1100px, 92%); margin:0 auto}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      background:linear-gradient(180deg, rgba(110,143,108,.12), rgba(110,143,108,0));
+      padding:56px 0 24px;
+    }
+    .hero-inner{display:grid; gap:18px}
+    .eyebrow{
+      display:inline-flex; gap:8px; align-items:center;
+      font-weight:600; font-size:.9rem; color:var(--vh-green-600);
+      background:var(--vh-green-50); padding:6px 12px; border-radius:999px;
+      border:1px solid #dfe5df;
+      width:max-content
+    }
+    .hero h1{
+      margin:0; font-size:clamp(1.6rem, 2.5vw + 1rem, 2.6rem); line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:2px 0 0; color:var(--vh-muted); max-width:65ch
+    }
+    .hero-ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .btn{
+      appearance:none; border:0; border-radius:12px; padding:12px 16px; font-weight:700;
+      cursor:pointer; text-decoration:none; display:inline-flex; gap:8px; align-items:center;
+      transition:transform .04s ease, box-shadow .2s ease, background .2s ease, color .2s ease
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--vh-green); color:#fff; box-shadow:var(--shadow)}
+    .btn-primary:hover{background:var(--vh-green-600)}
+    .btn-outline{
+      background:#fff; color:var(--vh-green); border:1px solid var(--vh-border)
+    }
+    .subnote{
+      font-size:.9rem; color:var(--vh-muted); margin-top:6px
+    }
+
+    /* Tabs */
+    .tabs{
+      position:sticky; top:0; z-index:6; background:#fff; border-top:1px solid var(--vh-border);
+      border-bottom:1px solid var(--vh-border)
+    }
+    .tablist{
+      display:flex; gap:8px; padding:10px 0; overflow:auto; scrollbar-width:none
+    }
+    .tablist::-webkit-scrollbar{display:none}
+    .tab{
+      flex:0 0 auto; padding:14px 24px; border:1px solid var(--vh-border); border-radius:999px;
+      background:#fff; font-weight:600; color:#2b2e30; cursor:pointer;
+      font-size:1.1rem;
+    }
+    @media (max-width: 768px) {
+      .tablist {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 8px;
+      }
+      .tab {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+.tab[aria-selected="true"]{
+      background:var(--vh-green); border-color:var(--vh-green); color:#fff
+    }
+
+    /* Sections */
+    section[role="tabpanel"]{display:none; padding:24px 0 46px}
+    section[role="tabpanel"][data-active="true"]{display:block}
+
+    /* Cards grid */
+    .grid{
+      display:grid; gap:16px; grid-template-columns:repeat(12, 1fr)
+    }
+    .col-4{grid-column:span 12}
+    @media (min-width:700px){ .col-4{grid-column:span 6} }
+    @media (min-width:960px){ .col-4{grid-column:span 4} }
+
+    .card{
+      background:var(--vh-card); border:1px solid var(--vh-border); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:16px; display:flex; flex-direction:column; min-height:100%;
+    }
+    .badge{
+      display:inline-flex; gap:6px; align-items:center; font-size:.78rem; font-weight:700;
+      background:#fff7e6; color:#8a6d1f; padding:4px 10px; border:1px solid #f4dfac; border-radius:999px
+    }
+    .card h3{margin:.2rem 0 .2rem; font-size:1.1rem}
+    .tagline{color:var(--vh-muted); font-size:.92rem; margin:0 0 6px}
+    .features{list-style:none; padding:0; margin:10px 0 14px}
+    .features li{display:flex; gap:8px; align-items:start; margin:6px 0}
+    .price{
+      display:flex; flex-direction:column; gap:4px; margin-top:auto; font-weight:700
+    }
+    .price div {
+      display:flex; align-items:baseline; gap:6px;
+    }
+.price .amt{font-size:1.6rem}
+    .price .unit{color:var(--vh-muted); font-weight:600}
+    .cta-row{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+    .btn-gold{
+      background:var(--vh-gold); color:#111; border:1px solid #b9962d; font-weight:800
+    }
+    .btn-gold:hover{filter:brightness(.95)}
+    .btn-ghost{background:transparent; border:1px solid var(--vh-border); color:#2b2e30}
+
+    .divider{height:1px; background:var(--vh-border); margin:26px 0}
+
+    /* FAQ */
+    .faq{display:grid; gap:10px}
+    details{
+      border:1px solid var(--vh-border); border-radius:12px; padding:12px; background:#fff
+    }
+    summary{list-style:none; cursor:pointer; font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--vh-muted)}
+
+    /* Sticky mobile CTA */
+    .sticky-cta{
+      position:sticky; bottom:0; z-index:10; background:#ffffffd9; backdrop-filter:saturate(180%) blur(8px);
+      border-top:1px solid var(--vh-border)
+    }
+    .sticky-cta .container{padding:10px 0; display:flex; gap:8px; justify-content:space-between}
+    .sticky-cta .btn{flex:1}
+
+    /* Footer mini */
+    .mini{
+      padding:28px 0; color:#555; font-size:.9rem; text-align:center; border-top:1px solid var(--vh-border)
+    }
+
+    /* Utility */
+    .icon{font-style:normal}
+    .muted{color:var(--vh-muted)}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    .hero-media{
+      width:100%; aspect-ratio:16/7; border-radius:18px; border:1px solid var(--vh-border);
+      background:#f7f8f7 url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    }
+    /* Improve tap targets on mobile */
+    @media (max-width:700px){
+      .btn{padding:8px 12px; font-size:0.9rem}
+      .sticky-cta .btn{padding:8px 12px}
+    }
+</style>
+
+  <!-- Offer Catalog Schema (edit prices/URLs as needed) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "name": "The Village Hub Memberships",
+    "itemListElement": [
+      {"@type":"Offer","name":"Village Resident — Dedicated Desk","priceCurrency":"ZAR","price":"3500","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Village Local — Month Pass (Any Desk)","priceCurrency":"ZAR","price":"3000","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Village Nomad — Day Pass","priceCurrency":"ZAR","price":"250","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Village Visitor — 10 Days / Month (R160/day)","priceCurrency":"ZAR","price":"1600","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Village Drifter — Half Day","priceCurrency":"ZAR","price":"150","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Village Moment — Per Hour","priceCurrency":"ZAR","price":"60","url":"https://members.villagehub.co.za/","category":"Coworking"},
+      {"@type":"Offer","name":"Meeting Rooms — Hourly","priceCurrency":"ZAR","price":"800","url":"https://members.villagehub.co.za/","category":"MeetingRoom"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Navigation Buttons -->
+  <div class="container" style="margin: 16px auto; display: flex; gap: 8px; justify-content: flex-end;">
+    <a href="/" class="btn btn-outline" style="text-decoration: none; padding: 8px 12px; font-size: 0.9rem;">
+      <span class="icon" aria-hidden="true">🏠</span> Home
+    </a>
+    <a href="/coworking-vs-traditional-2.html" class="btn btn-outline" style="text-decoration: none; padding: 8px 12px; font-size: 0.9rem;">
+      <span class="icon" aria-hidden="true">🔄</span> Comparison
+    </a>
+  </div>
+<!-- HERO -->
+  <header class="hero" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <span class="eyebrow" aria-hidden="true" style="margin-top: 20px;">Innovate. Thrive. Connect.</span>
+<h1 id="hero-title">Our Pricing &amp; Membership Options</h1>
+      <p>Whether you’re dropping in for a day, joining monthly, or moving your team into a private office — The Village Hub gives you focus, community, and flexibility.</p>
+      <div class="hero-ctas" role="group" aria-label="Primary actions">
+      <a class="btn btn-primary" href="https://members.villagehub.co.za/">
+<span class="icon" aria-hidden="true">🗓️</span> Book Now
+        </a>
+      <a class="btn btn-outline" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%20%F0%9F%8C%BF%20I%27d%20like%20to%20schedule%20a%20tour">
+<span class="icon" aria-hidden="true">👋</span> Schedule a Tour
+        </a>
+      </div>
+      <p class="subnote">No long-term lock-in. Upgrade, downgrade, or cancel with notice. Coffee &amp; fast Wi-Fi included on all plans.</p>
+      <div class="hero-media" style="background-image: url('https://huggingface.co/spaces/Mariusvj86/the-village-hub/resolve/main/images/2025.08.28%20Nooitgedacht%20%20Co-working%20Stage%2001%20Presentation_4.jpg')" role="img" aria-label="Modern coworking space at The Village Hub"></div>
+</div>
+  </header>
+    <!-- TABS -->
+    <nav class="tabs" aria-label="Pricing categories">
+        <div class="container">
+            <div class="tablist" role="tablist" aria-orientation="horizontal">
+                <button class="tab" role="tab" id="tab-individuals" aria-controls="panel-individuals" aria-selected="true">Individuals</button>
+                <button class="tab" role="tab" id="tab-teams" aria-controls="panel-teams" aria-selected="false">Private Offices</button>
+<button class="tab" role="tab" id="tab-meetings" aria-controls="panel-meetings" aria-selected="false">Meetings &amp; Events</button>
+                <button class="tab" role="tab" id="tab-accommodation" aria-controls="panel-accommodation" aria-selected="false">Accommodation</button>
+</div>
+</div>
+  </nav>
+
+  <main id="main">
+    <!-- INDIVIDUALS -->
+    <section id="panel-individuals" role="tabpanel" aria-labelledby="tab-individuals" data-active="true">
+      <div class="container">
+        <div class="grid">
+          <!-- Resident -->
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">⭐</span> Most Popular</span>
+            <h3>Village Resident — Dedicated Desk</h3>
+            <p class="tagline">“Your forever home in the Hub.”</p>
+            <ul class="features">
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+<li><span aria-hidden="true">🔑</span> 24/7 access (site policy)</li>
+              <li><span aria-hidden="true">⚡</span> Fast Wi-Fi, power, printing credits</li>
+              <li><span aria-hidden="true">🌿</span> Community events & perks</li>
+            </ul>
+            <div class="price"><span class="amt">R3,500</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Reserve Desk</a>
+              <a class="btn btn-ghost" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%2C%20tell%20me%20more%20about%20Dedicated%20Desk" target="_blank" rel="noreferrer noopener">Ask a question</a>
+            </div>
+</article>
+
+          <!-- Local -->
+          <article class="card col-4">
+            <h3>Village Local — Month Pass (Any Desk)</h3>
+            <p class="tagline">“Unlimited access. Any desk, any day — you belong here.”</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🪑</span> Choose any hot desk</li>
+              <li><span aria-hidden="true">📆</span> Unlimited weekdays (site policy)</li>
+              <li><span aria-hidden="true">📡</span> High-speed Wi-Fi</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+</ul>
+            <div class="price"><span class="amt">R3,000</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Join as Local</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%2C%20I%27m%20interested%20in%20the%20Month%20Pass" target="_blank" rel="noreferrer noopener">WhatsApp us</a>
+</div>
+          </article>
+
+          <!-- Nomad -->
+          <article class="card col-4">
+            <h3>Village Nomad — Day Pass</h3>
+            <p class="tagline">“Here for a day.”</p>
+            <ul class="features">
+              <li><span aria-hidden="true">💻</span> Any hot desk for the day</li>
+              <li><span aria-hidden="true">🕘</span> Business-hours access</li>
+              <li><span aria-hidden="true">📶</span> Fast Wi-Fi</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+</ul>
+            <div class="price"><span class="amt">R250</span><span class="unit">/ day</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Book a Day</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%2C%20I%20want%20to%20book%20a%20Day%20Pass" target="_blank" rel="noreferrer noopener">WhatsApp us</a>
+</div>
+          </article>
+
+          <!-- Visitor (10 Days / Month) -->
+          <article class="card col-4">
+            <h3>🌿 Village Visitor — 10 Days / Month</h3>
+            <p class="tagline">“10 days a month. Here often enough to get a nickname.”</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🗓️</span> 10x Day Pass credits each month</li>
+              <li><span aria-hidden="true">🪑</span> Any hot desk — pick your favourite seat</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+<li><span aria-hidden="true">🎟️</span> Member rates on rooms</li>
+            </ul>
+            <div class="price"><span class="amt">R160</span><span class="unit">/ day</span><span class="muted"> (10-day bundle)</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Activate Plan</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Village%20Visitor%20(10%20days)%20enquiry" target="_blank" rel="noreferrer noopener">Chat First</a>
+</div>
+          </article>
+          <!-- Wanderer (5 days) -->
+          <article class="card col-4">
+            <h3>Village Wanderer — 5 Days / Month</h3>
+            <p class="tagline">"Five focused days, every month."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🗂️</span> 5x Day Pass credits</li>
+              <li><span aria-hidden="true">📍</span> Any hot desk</li>
+              <li><span aria-hidden="true">📧</span> Priority booking</li>
+              <li><span aria-hidden="true">🎟️</span> Member rates on rooms</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+            </ul>
+            <div class="price"><span class="amt">R1,000</span><span class="unit">/ month</span><span class="muted">(R200/day)</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks" target="_blank" rel="noreferrer noopener">Activate Plan</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%2C%20tell%20me%20more%20about%20Wanderer%205%2Fmonth" target="_blank" rel="noreferrer noopener">Chat first</a>
+</div>
+          </article>
+<!-- Drifter (Half Day) -->
+          <article class="card col-4">
+            <h3>☕ Village Drifter — Half Day</h3>
+            <p class="tagline">“You’re just passing through but still part of the story.”</p>
+            <ul class="features">
+              <li><span aria-hidden="true">⏱️</span> 4 hours of focused productivity</li>
+              <li><span aria-hidden="true">💺</span> Any hot desk</li>
+              <li><span aria-hidden="true">📶</span> Fast Wi-Fi</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+              <li><span aria-hidden="true">😊</span> Friendly faces & warm vibe</li>
+            </ul>
+<div class="price"><span class="amt">R150</span><span class="unit">/ half day</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Book Half Day</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Half%20Day%20(Drifter)%20booking%20question" target="_blank" rel="noreferrer noopener">WhatsApp us</a>
+</div>
+          </article>
+          <!-- Moment (Per Hour) -->
+          <article class="card col-4">
+            <h3>Village Moment — Per Hour</h3>
+            <p class="tagline">"For a quick pause, a thought, or the right burst of focus."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🕐</span> Pay-as-you-need hourly desk</li>
+              <li><span aria-hidden="true">🎧</span> Perfect for remote calls & short tasks</li>
+              <li><span aria-hidden="true">🔌</span> Power & Wi-Fi included</li>
+              <li><span aria-hidden="true">🌿</span> Calm Village Hub energy</li>
+              <li><span aria-hidden="true">☕</span> Coffee discounts from Village Table</li>
+            </ul>
+            <div class="price"><span class="amt">R60</span><span class="unit">/ hour</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/desks">Start by the Hour</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=Hourly%20(Moment)%20desk%20question" target="_blank" rel="noreferrer noopener">Chat first</a>
+</div>
+          </article>
+<!-- Add-on locker -->
+          <article class="card col-4">
+            <h3>Add-On: Locker</h3>
+            <p class="tagline">Keep your gear safe on site.</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🔐</span> Personal locker</li>
+              <li><span aria-hidden="true">🧰</span> Fits laptop + peripherals</li>
+              <li><span aria-hidden="true">💰</span> Flexible rental options</li>
+            </ul>
+            <div class="price">
+              <div><span class="amt">R40</span><span class="unit">/ day</span></div>
+              <div><span class="amt">R150</span><span class="unit">/ week</span></div>
+              <div><span class="amt">R350</span><span class="unit">/ month</span></div>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/equipment">Book Now</a>
+</div>
+</article>
+
+          <!-- Add-on portable monitor -->
+          <article class="card col-4">
+            <h3>💻 Portable Monitor Rental</h3>
+            <p class="tagline">ASUS ZenScreen 16″ Full HD</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🖥️</span> 16" Full HD portable display</li>
+              <li><span aria-hidden="true">⚡</span> USB-C powered (cable included)</li>
+              <li><span aria-hidden="true">🎒</span> Lightweight & portable</li>
+              <li><span aria-hidden="true">🛡️</span> Includes stand cover</li>
+            </ul>
+            <div class="price">
+              <div><span class="amt">R100</span><span class="unit">/ day</span></div>
+              <div><span class="amt">R350</span><span class="unit">/ week</span></div>
+              <div><span class="amt">R950</span><span class="unit">/ month</span></div>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Available at reception | Subject to availability | Members get priority</p>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://members.villagehub.co.za/suite/organizations/e54f9f0c-df10-4943-aadc-fd378c74bd11/equipment">Book Now</a>
+</div>
+</article>
+</div>
+        <div class="divider"></div>
+
+        <div class="grid">
+</div>
+    </section>
+
+    <!-- TEAMS & OFFICES -->
+    <section id="panel-teams" role="tabpanel" aria-labelledby="tab-teams" data-active="false">
+      <div class="container">
+        <div class="grid">
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🏡</span> Village Manor</span>
+            <h3>6-Seater Private Office</h3>
+            <p class="tagline">"Where leadership meets community."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🪑</span> Spacious private workspace</li>
+              <li><span aria-hidden="true">🌿</span> Premium Village Hub location</li>
+              <li><span aria-hidden="true">🔌</span> All utilities & amenities included</li>
+              <li><span aria-hidden="true">🧑‍💼</span> Dedicated team concierge</li>
+            </ul>
+            <div class="price"><span class="amt">R20,950</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=I'm%20interested%20in%20the%20Village%20Manor%20private%20office">Book Manor</a>
+              <a class="btn btn-ghost" href="https://wa.me/27721900939?text=I%20have%20questions%20about%20the%20Village%20Manor" target="_blank" rel="noreferrer noopener">Talk to Us</a>
+            </div>
+            <div class="mt-4">
+              <iframe src="https://calendar.google.com/calendar/embed?src=c_2b08545133fbeb86d8e8b3de20d9b98843ef9abdab207c5aa509b9bf0bd01950%40group.calendar.google.com&ctz=Africa%2FJohannesburg" 
+                style="border:0; width:100%; height:300px; border-radius:8px;" 
+                frameborder="0" 
+                scrolling="no">
+              </iframe>
+              <p class="text-xs text-gray-500 mt-1">Availability for Village Manor (6-seater)</p>
+            </div>
+</article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🌳</span> Village Cottage</span>
+            <h3>4-Seater Private Office</h3>
+            <p class="tagline">"Comfort, creativity & collaboration under one roof."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">📶</span> Dedicated high-speed WiFi</li>
+              <li><span aria-hidden="true">🛋️</span> Lounge access included</li>
+              <li><span aria-hidden="true">🖥️</span> Meeting room credits</li>
+              <li><span aria-hidden="true">☕</span> Premium coffee service</li>
+            </ul>
+<div class="price"><span class="amt">R13,950</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=I'm%20interested%20in%20the%20Village%20Cottage%20private%20office">Book Cottage</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=I%20have%20questions%20about%20the%20Village%20Cottage" target="_blank" rel="noreferrer noopener">Talk to Us</a>
+</div>
+</article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🌿</span> Village Studio</span>
+            <h3>3-Seater Private Office</h3>
+            <p class="tagline">"Intimate. Inspired. Independent."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🔐</span> 24/7 secure access</li>
+              <li><span aria-hidden="true">📞</span> Business address for mail</li>
+<li><span aria-hidden="true">🧹</span> Daily cleaning included</li>
+              <li><span aria-hidden="true">💬</span> Community networking</li>
+            </ul>
+<div class="price"><span class="amt">R10,450</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=I'm%20interested%20in%20the%20Village%20Studio%20private%20office">Book Studio</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=I%20have%20questions%20about%20the%20Village%20Studio" target="_blank" rel="noreferrer noopener">Talk to Us</a>
+</div>
+</article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🌼</span> Village Nook</span>
+            <h3>1-2 Seater Private Office</h3>
+            <p class="tagline">"Your quiet corner in the Village."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🎧</span> Noise-reducing design</li>
+              <li><span aria-hidden="true">💻</span> Ergonomic workspace</li>
+              <li><span aria-hidden="true">📶</span> High-speed WiFi</li>
+              <li><span aria-hidden="true">☕</span> Complimentary coffee</li>
+            </ul>
+<div class="price"><span class="amt">R6,950</span><span class="unit">/ month</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=I'm%20interested%20in%20the%20Village%20Nook%20private%20office">Book Nook</a>
+<a class="btn btn-ghost" href="https://wa.me/27721900939?text=I%20have%20questions%20about%20the%20Village%20Nook" target="_blank" rel="noreferrer noopener">Talk to Us</a>
+</div>
+</article>
+</div>
+
+        <div class="divider"></div>
+
+        <div class="faq">
+          <details>
+            <summary>What’s included in private offices?</summary>
+            <p>Furniture, utilities, Wi-Fi, cleaning, reception, and access to member perks. Unfurnished options available on request.</p>
+          </details>
+          <details>
+            <summary>Can we customise the layout?</summary>
+            <p>Yes. We’ll work with you on layout, storage, branding, and add-ons like dedicated bandwidth or access control.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEETINGS & EVENTS -->
+    <section id="panel-meetings" role="tabpanel" aria-labelledby="tab-meetings" data-active="false">
+      <div class="container">
+        <div class="grid">
+<article class="card col-4">
+            <span class="badge"><span aria-hidden="true">📣</span> Workshop</span>
+            <h3>Workshop / Training Room</h3>
+            <p class="tagline">Flexible layouts for teams.</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🧩</span> Classroom / U-shape / Pods</li>
+              <li><span aria-hidden="true">🔊</span> AV support available</li>
+              <li><span aria-hidden="true">🥐</span> Catering on request</li>
+            </ul>
+            <div class="price"><span class="amt">From R—</span><span class="unit">/ hour</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Workshop%20room%20enquiry">Get a quote</a>
+</div>
+          </article>
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🎉</span> Events</span>
+            <h3>Evening Events</h3>
+            <p class="tagline">Community & client events at the Hub.</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🪑</span> Venue layout & setup assistance</li>
+              <li><span aria-hidden="true">💡</span> Warm lighting & local décor</li>
+              <li><span aria-hidden="true">🍽️</span> Catering coordination</li>
+            </ul>
+<div class="price"><span class="amt">Custom</span><span class="unit"> — POA</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Event%20space%20enquiry">Plan an event</a>
+</div>
+          </article>
+<article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🎤</span> Conference</span>
+            <h3>Village Gathering — Conference Package</h3>
+            <p class="tagline">"Perfect for quick collaborations and powerful conversations."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">⏱️</span> 2-hour minimum booking</li>
+              <li><span aria-hidden="true">💡</span> Bright, connected space</li>
+              <li><span aria-hidden="true">🖥️</span> AV equipment included</li>
+            </ul>
+            <div class="price"><span class="amt">R800</span><span class="unit">/ hour</span><span class="muted"> (R1,600/2hrs)</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Gathering%20Conference%20enquiry">Book Now</a>
+</div>
+          </article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🌿</span> Conference</span>
+            <h3>Village Assembly — Conference Package</h3>
+            <p class="tagline">"Where ideas take root and grow."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">⏱️</span> 4-hour minimum booking</li>
+              <li><span aria-hidden="true">🧠</span> Designed for focus and flow</li>
+              <li><span aria-hidden="true">☕</span> Coffee service included</li>
+            </ul>
+            <div class="price"><span class="amt">R650</span><span class="unit">/ hour</span><span class="muted"> (R2,800/4hrs)</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Assembly%20Conference%20enquiry">Book Now</a>
+</div>
+          </article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">💬</span> Meeting</span>
+            <h3>Village Den (4-Seater)</h3>
+            <p class="tagline">"Small space. Big thinking."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🧘</span> Intimate setting</li>
+              <li><span aria-hidden="true">📝</span> Perfect for brainstorming</li>
+              <li><span aria-hidden="true">🔌</span> Tech hookups included</li>
+            </ul>
+            <div class="price"><span class="amt">R180</span><span class="unit">/ hour</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Village%20Den%20enquiry">Reserve</a>
+</div>
+          </article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🤝</span> Meeting</span>
+            <h3>Village Chamber (10-Seater)</h3>
+            <p class="tagline">"Where strategy meets synergy."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🧑‍💼</span> Professional setting</li>
+              <li><span aria-hidden="true">🖥️</span> Presentation equipment</li>
+              <li><span aria-hidden="true">📶</span> High-speed connectivity</li>
+            </ul>
+            <div class="price"><span class="amt">R390</span><span class="unit">/ hour</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Village%20Chamber%20enquiry">Reserve</a>
+            </div>
+            <div class="mt-4">
+              <iframe src="https://calendar.google.com/calendar/embed?src=c_1c15bf34b558008117cb0f300bdf8251cbb2bfde28ac49381526ca9e67fb318c%40group.calendar.google.com&ctz=Africa%2FJohannesburg" 
+                style="border:0; width:100%; height:300px; border-radius:8px;" 
+                frameborder="0" 
+                scrolling="no">
+              </iframe>
+              <p class="text-xs text-gray-500 mt-1">Availability for Village Chamber (10-seater)</p>
+            </div>
+</article>
+
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🪴</span> Meeting</span>
+            <h3>Village Boardroom</h3>
+            <p class="tagline">"The heart of decision-making."</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🪑</span> Premium seating</li>
+              <li><span aria-hidden="true">📊</span> Executive presentation tools</li>
+              <li><span aria-hidden="true">🗣️</span> Acoustic optimization</li>
+            </ul>
+            <div class="price"><span class="amt">R390</span><span class="unit">/ hour</span></div>
+            <div class="cta-row">
+              <a class="btn btn-gold" href="https://wa.me/27721900939?text=Village%20Boardroom%20enquiry">Reserve</a>
+</div>
+          </article>
+        </div>
+<div class="divider"></div>
+
+        <div class="faq">
+          <details>
+            <summary>Can we bring our own catering?</summary>
+            <p>Yes. We also have partner caterers. Let us know dietary preferences and numbers.</p>
+          </details>
+          <details>
+            <summary>Can we customise the layout?</summary>
+            <p>Yes. We'll work with you on layout, storage, branding, and add-ons like dedicated bandwidth or access control.</p>
+          </details>
+          <details>
+            <summary>Is after-hours access possible?</summary>
+            <p>For certain events and members, yes — subject to availability and site rules.</p>
+          </details>
+</div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ACCOMMODATION -->
+    <section id="panel-accommodation" role="tabpanel" aria-labelledby="tab-accommodation" data-active="false">
+      <div class="container">
+        <div class="grid">
+          <article class="card col-4">
+            <span class="badge"><span aria-hidden="true">🪴</span> The Village Suites</span>
+            <h3>Your Stay, Rooted in Tranquility 🌿</h3>
+            <p class="tagline">Wake up in the heart of Nooitgedacht Village — where modern comfort meets the calm of the winelands.</p>
+            <ul class="features">
+              <li><span aria-hidden="true">🛏</span> Two single beds (convertible to a King)</li>
+              <li><span aria-hidden="true">📺</span> Smart TV with unlimited Wi-Fi</li>
+              <li><span aria-hidden="true">🍳</span> Compact kitchenette for light meals</li>
+              <li><span aria-hidden="true">🚿</span> Private bathroom with walk-in shower</li>
+              <li><span aria-hidden="true">✨</span> 50% off access to Village Hub Co-Working</li>
+              <li><span aria-hidden="true">🍽</span> Discounts at The Village Table Restaurant</li>
+              <li><span aria-hidden="true">🚶‍♀️</span> Full estate amenities & trails access</li>
+            </ul>
+            <div class="price"><span class="amt">R1,350</span><span class="unit">/ night</span></div>
+            <div class="cta-row">
+            <a class="btn btn-gold" href="/accommodation.html">View Suites</a>
+<a class="btn btn-ghost" href="/accommodation.html">Book Your Stay</a>
+</div>
+</article>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="faq">
+          <details>
+            <summary>What are the check-in/check-out times?</summary>
+            <p>Check-in is from 2PM and check-out is by 10AM. Early check-in/late check-out may be available upon request.</p>
+          </details>
+          <details>
+            <summary>Is breakfast included?</summary>
+            <p>No, but your suite includes a kitchenette and you'll receive discounts at The Village Table Restaurant.</p>
+          </details>
+          <details>
+            <summary>Can I book for multiple nights?</summary>
+            <p>Yes! We offer special rates for extended stays. Contact us for weekly or monthly rates.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+<div class="container" style="margin: 40px auto;">
+    <div class="tablist" role="tablist" aria-orientation="horizontal">
+      <button class="tab" role="tab" id="tab-individuals-bottom-2" aria-controls="panel-individuals" aria-selected="true">Individuals</button>
+      <button class="tab" role="tab" id="tab-teams-bottom-2" aria-controls="panel-teams" aria-selected="false">Private Offices</button>
+<button class="tab" role="tab" id="tab-meetings-bottom-2" aria-controls="panel-meetings" aria-selected="false">Meetings &amp; Events</button>
+      <button class="tab" role="tab" id="tab-accommodation-bottom-2" aria-controls="panel-accommodation" aria-selected="false">Accommodation</button>
+    </div>
+  </div>
+<!-- Sticky Mobile CTA -->
+  <aside class="sticky-cta" aria-label="Quick booking">
+    <div class="container">
+      <a class="btn btn-primary" href="https://members.villagehub.co.za/" target="_blank" rel="noreferrer noopener">
+        <span class="icon" aria-hidden="true">🗓️</span> Book Now
+      </a>
+      <a class="btn btn-outline" href="https://wa.me/27721900939?text=Hi%20Village%20Hub%20%F0%9F%8C%BF%20I%27d%20like%20to%20schedule%20a%20tour" target="_blank" rel="noreferrer noopener">
+        <span class="icon" aria-hidden="true">💬</span> Tour
+      </a>
+</div>
+  </aside>
+<script>
+    // Connect bottom tabs to same functionality
+    const connectTabs = (id) => {
+      document.getElementById(id).addEventListener('click', () => {
+        document.getElementById(id.replace('-bottom-2', '-bottom')).click();
+      });
+    };
+    ['tab-individuals-bottom', 'tab-teams-bottom', 'tab-meetings-bottom', 'tab-accommodation-bottom',
+'tab-accommodation-bottom',
+     'tab-individuals-bottom-2', 'tab-teams-bottom-2', 'tab-meetings-bottom-2', 'tab-accommodation-bottom-2'].forEach(id => {
+      if (document.getElementById(id)) {
+        document.getElementById(id).addEventListener('click', () => {
+          document.getElementById(id.replace(/-bottom(-\d)?/, '')).click();
+        });
+      }
+    });
+</script>
+<!-- Mini Footer -->
+  <footer class="mini">
+    <div class="container">
+      <div>© <span id="year"></span> The Village Hub. All rights reserved.</div>
+      <div class="muted">Pricing inclusive of amenities unless noted. Subject to availability & change.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tabs
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.setAttribute('aria-selected','false'));
+        tab.setAttribute('aria-selected','true');
+        panels.forEach(p=>p.dataset.active='false');
+        const panel = document.getElementById(tab.getAttribute('aria-controls'));
+        panel.dataset.active = 'true';
+      });
+    });
+
+    // Keyboard support for tabs
+    document.querySelector('.tablist').addEventListener('keydown', (e)=>{
+      const currentIndex = [...tabs].findIndex(t=>t.getAttribute('aria-selected')==='true');
+      if(['ArrowRight','ArrowLeft','Home','End'].includes(e.key)){
+        e.preventDefault();
+        let nextIndex = currentIndex;
+        if(e.key==='ArrowRight') nextIndex = (currentIndex+1)%tabs.length;
+        if(e.key==='ArrowLeft') nextIndex = (currentIndex-1+tabs.length)%tabs.length;
+        if(e.key==='Home') nextIndex = 0;
+        if(e.key==='End') nextIndex = tabs.length-1;
+        tabs[nextIndex].focus();
+        tabs[nextIndex].click();
+      }
+    });
+  </script>
+</body>
+</html>
