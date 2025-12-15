@@ -1,2 +1,6 @@
+[build]
+  base = "the-village-hub"
+  publish = "."
+
 [functions]
   directory = "netlify/functions"
