@@ -4,3 +4,15 @@
 
 [functions]
   directory = "netlify/functions"
+
+[[redirects]]
+  from = "/villagestay-welcome"
+  to = "https://village-stay-welcome.netlify.app/villagestay-welcome"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/villagestay-welcome/*"
+  to = "https://village-stay-welcome.netlify.app/villagestay-welcome/:splat"
+  status = 200
+  force = true
