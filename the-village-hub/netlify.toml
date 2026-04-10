@@ -7,12 +7,12 @@
 
 [[redirects]]
   from = "/villagestay-welcome"
-  to = "https://village-stay-welcome.netlify.app/villagestay-welcome"
+  to = "https://village-stay-welcome.netlify.app/"
   status = 200
   force = true
 
 [[redirects]]
   from = "/villagestay-welcome/*"
-  to = "https://village-stay-welcome.netlify.app/villagestay-welcome/:splat"
+  to = "https://village-stay-welcome.netlify.app/:splat"
   status = 200
   force = true
